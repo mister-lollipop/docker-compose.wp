@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  db:
+    image: mysql:8.0.19
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Sudhakar1234
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=Sudhakar
+      - MYSQL_PASSWORD=Sudhakar8866
+
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "80:80"
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=sudhakar
+      - WORDPRESS_DB_PASSWORD=Sudhakar8866
+      - WORDPRESS_DB_NAME=mydb  # Make sure this matches the MYSQL_DATABASE
+
+volumes:
+  db_data:
