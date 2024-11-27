@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecomm-deployment
+  labels: 
+    app: ecomm-app
+    tier: frontend
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: k8
+        image: sudhakar8866/image1
+        ports:
+        - containerPort: 80
